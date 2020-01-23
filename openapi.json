@@ -1,0 +1,227 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Toddle API Service",
+    "version": "0.0.2",
+    "description": "Toddle API Service endpoints",
+    "contact": {
+      "email": "himujjalupadhyaya@outlook.com",
+      "name": "Himujjal Upadhyaya"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000/api"
+    }
+  ],
+  "tags": [
+    {
+      "name": "auth",
+      "description": "Authentication APIs"
+    }
+  ],
+  "paths": {
+    "/login": {
+      "post": {
+        "tags": [
+          "auth"
+        ],
+        "summary": "Login",
+        "operationId": "login",
+        "requestBody": {
+          "description": "User Logging in",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginReqBodySchema"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User was logged in",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoginResBodySchema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/sign_up": {
+      "post": {
+        "tags": [
+          "auth"
+        ],
+        "summary": "SignUp",
+        "operationId": "SignUp",
+        "requestBody": {
+          "description": "User Signing up",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SignUpReqBodySchema"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User was registered",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SignUpResBodySchema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/refresh_token": {
+      "post": {
+        "tags": [
+          "auth"
+        ],
+        "summary": "Refresh Token",
+        "operationId": "RefreshToken",
+        "requestBody": {
+          "description": "Get Refresh Token",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RefreshTokenReqBodySchema"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Got a new Refresh Token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RefreshTokenResBodySchema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Server error"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "LoginReqBodySchema": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "example": "himujjal@graspio.com"
+          },
+          "password": {
+            "type": "string",
+            "example": "Abcd1234"
+          }
+        }
+      },
+      "LoginResBodySchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string",
+            "example": "himujjal@graspio.com"
+          },
+          "name": {
+            "type": "string",
+            "example": "John"
+          },
+          "token": {
+            "type": "string",
+            "example": "2ddww3ffewfewf324f23f23f23f32f"
+          },
+          "refreshToken": {
+            "type": "string",
+            "example": "12edd12dqwd12d1d1c1.d1d1wd1d1d1wd1wd"
+          }
+        }
+      },
+      "SignUpReqBodySchema": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "John"
+          },
+          "email": {
+            "type": "string",
+            "example": "himujjal@graspio.com"
+          },
+          "password": {
+            "type": "string",
+            "example": "Abcd1234"
+          }
+        }
+      },
+      "SignUpResBodySchema": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "John"
+          },
+          "email": {
+            "type": "string",
+            "example": "himujjal@graspio.com"
+          },
+          "id": {
+            "type": "string",
+            "example": "asdsadwqecqdsa32ece"
+          }
+        }
+      },
+      "RefreshTokenReqBodySchema": {
+        "type": "object",
+        "properties": {
+          "refreshToken": {
+            "type": "string",
+            "example": "ad32d23d32c32d32xwqdf32"
+          },
+          "userId": {
+            "type": "string",
+            "example": "asdsadwqecqdsa32ece"
+          }
+        }
+      },
+      "RefreshTokenResBodySchema": {
+        "type": "object",
+        "properties": {
+          "token": {
+            "type": "string",
+            "example": "ad32d23d32c32d32xwqdf32"
+          }
+        }
+      }
+    }
+  }
+}

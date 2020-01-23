@@ -1,0 +1,473 @@
+{
+	"info": {
+		"_postman_id": "eaa8e292-f509-4d7f-b1d6-f6be2bbcb1c9",
+		"name": "ToddleBackend",
+		"description": "API Documentation for toddle backend survey app!",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"himujjal1@graspio.com\",\n\t\"password\": \"abcd1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"login"
+							]
+						},
+						"description": "### Login Schema:\n\nReq Body:\n```json\n{\n\temail: string,\n\tpassword: string\n}\n```\n\nRes Body:\n```json\n{\n\tid: \t\tstring,\n\temail:\t\tstring,\n\tname:\t\tstring,\n\ttoken:\t\tstring;\n\trefreshToken: string;\n\t\n}\n```\n\nError Body:\n```json\n{\n\terror: string;\t\n}\n```"
+					},
+					"response": []
+				},
+				{
+					"name": "Signup",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Himujjal\",\n\t\"email\": \"himujjal2@graspio.com\",\n\t\"password\": \"abcd1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/sign_up",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"sign_up"
+							]
+						},
+						"description": "### Signing up Schema:\n\nReq Body:\n```json\n{\n\tname: string;\n\temail: string;\n\tpassword: string;\n}\n```\n\nRes Body:\n```json\n{\n\tid: string;\n\tname: string;\n\temail: string;\n}\n```"
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh Token",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"refreshToken\": \"95c503e0-3d56-11ea-9ea5-53c170acbc67\",\n    \"userId\": \"XHCFv75Qj0wjU66C\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/refresh_token",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"refresh_token"
+							]
+						},
+						"description": "Ask for refresh token\n\nReq Body:\n```json\n{\n\trefreshToken: string;\n\tuserId: string;\n}\n```\n\nRes Body:\n```json\n{\n\ttoken: string;\n}\n```"
+					},
+					"response": []
+				}
+			],
+			"description": "Authentication based endpoints!",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "9714a69a-b497-4ba4-a8ea-3f9208b2cc80",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "70a9585c-a7fc-4119-95f1-7f4dacbe79be",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "survey",
+			"item": [
+				{
+					"name": "add_survey",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"question\": \"Question 1\",\n\t\"creatorUserId\": \"XHCFv75Qj0wjU66C\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/survey/add",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"survey",
+								"add"
+							]
+						},
+						"description": "Endpoint for adding a new Survey:\n\nReq:\n```json\n{\n\tquestion: string;\n\tcreatorUserId: string;\n}\n```\n\nRes:\n```json\n{\n\tid: string,\n\tquestion: string,\n\tcreatorUserId: string,\n\tresult: [{\n\t\tuserId: string;\n\t\tanswer: boolean;\n\t}]\n}\n```"
+					},
+					"response": []
+				},
+				{
+					"name": "Get all surveys",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/survey/all",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"survey",
+								"all"
+							]
+						},
+						"description": "Get all the surveys there are and "
+					},
+					"response": []
+				},
+				{
+					"name": "Get all Surveys by User",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/survey/all_user",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"survey",
+								"all_user"
+							]
+						},
+						"description": "Get all the surveys created by the user\n\nReq:\n```json\n```\n\nResponse:\n```json\n{\n\tsurveys: [{\n\t\tid: string;\n\t\tquestion: string;\n\t\tcreatorUserId: string;\n\t\tresult: [{\n\t\t\tuserId: string;\n\t\t\tanswer: boolean;\n\t\t}]\n\t}]\n}\n```"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a Survey",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/survey/delete/:surveyId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"survey",
+								"delete",
+								":surveyId"
+							],
+							"variable": [
+								{
+									"key": "surveyId",
+									"value": "59gP7rUZHFNKzj91"
+								}
+							]
+						},
+						"description": "Delete a survey created by the user\n\nReq params:\n```\nsurveyId: string;\n\n```\n\nRes:\n```json\n{\n\tsuccess: boolean;\n}\n```"
+					},
+					"response": []
+				},
+				{
+					"name": "Update a survey",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"surveyId\": \"\",\r\n    \"question\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/survey/update",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"survey",
+								"update"
+							]
+						},
+						"description": "Update a particular survey\n\nReq:\n```json\n{\n\tsurveyId: string;\n\tquestion: string;\n}\n```\n\nRes:\n```json\n{\n\tsuccess: boolean;\n}\n```"
+					},
+					"response": []
+				},
+				{
+					"name": "Get a survey",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/survey/get/:surveyId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"survey",
+								"get",
+								":surveyId"
+							],
+							"variable": [
+								{
+									"key": "surveyId",
+									"value": ""
+								}
+							]
+						},
+						"description": "Get a particular survey by ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Vote on a Survey",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"surveyId\": \"Af2PCSEEiLnoIN9a\",\n\t\"newAnswer\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/survey/vote",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"survey",
+								"vote"
+							]
+						},
+						"description": "Cast a vote on a survey\n\nReq:\n```json\n{\n\tsurveyId: string;\n\tnewAnswer: string;\n}\n```\n\nRes:\n```json\n{\n\tsuccess: boolean;\n}\n```"
+					},
+					"response": []
+				}
+			],
+			"description": "Survey APIs",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "85a389d3-3a3b-4971-adc5-06151fb739b9",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "70fb458e-109b-4c99-840e-4381c1ae9876",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "image",
+			"item": [
+				{
+					"name": "resize",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"url\": \"https://media.gettyimages.com/photos/beautiful-woman-picture-id866612478?s=2048x2048\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/image/resize",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"image",
+								"resize"
+							]
+						},
+						"description": "Resize image to 50x50 px"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "7fc59a41-4628-44a9-8a50-3ed8f7a179e5",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "9c669f93-c3b2-412c-b596-476693b3eb02",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "f6d77176-eaed-42c5-9cb4-8c18c2df6659",
+			"key": "token",
+			"value": "abcde",
+			"type": "string"
+		},
+		{
+			"id": "b2c89fd6-163f-48e9-96ef-2690f11c3900",
+			"key": "baseUrl",
+			"value": "http://localhost:3000/api",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}

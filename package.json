@@ -1,0 +1,67 @@
+{
+  "name": "toddle-backend-survey",
+  "version": "1.0.0",
+  "description": "NodeJS backend for Toddle survey",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Himujjal/toddle-backend.git"
+  },
+  "keywords": [
+    "TypeScript",
+    "express",
+    "nodejs",
+    "boilerplate",
+    "eslint"
+  ],
+  "author": "Himujjal Upadhyaya",
+  "main": "dist/index.js",
+  "scripts": {
+    "eslint": "eslint src/server.ts",
+    "build": "tsc",
+    "dev": "nodemon",
+    "start": "node dist/server.js",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@types/bcryptjs": "^2.4.2",
+    "@types/jsonwebtoken": "^8.3.6",
+    "@types/nedb": "^1.8.9",
+    "@types/uuid": "^3.4.6",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "1.19.0",
+    "compression": "1.7.4",
+    "dotenv": "8.2.0",
+    "express": "4.17.1",
+    "image-convert": "^0.1.33",
+    "jimp": "^0.9.3",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "5.8.0",
+    "nedb": "^1.8.0",
+    "nodemon": "2.0.1",
+    "uuid": "^3.4.0",
+    "winston": "3.2.1"
+  },
+  "devDependencies": {
+    "@types/compression": "1.0.1",
+    "@types/dotenv": "8.2.0",
+    "@types/express": "4.17.2",
+    "@types/jest": "24.0.23",
+    "@types/mongoose": "5.5.34",
+    "@types/supertest": "2.0.8",
+    "@types/swagger-ui-express": "4.1.0",
+    "@typescript-eslint/eslint-plugin": "2.11.0",
+    "@typescript-eslint/parser": "2.11.0",
+    "eslint": "6.7.2",
+    "eslint-config-prettier": "6.7.0",
+    "eslint-plugin-prettier": "3.1.1",
+    "jest": "24.9.0",
+    "jest-express": "1.10.1",
+    "mockingoose": "2.13.2",
+    "prettier": "1.19.1",
+    "supertest": "4.0.2",
+    "swagger-ui-express": "4.1.2",
+    "ts-jest": "24.2.0",
+    "typescript": "3.7.3"
+  },
+  "license": "MIT"
+}
