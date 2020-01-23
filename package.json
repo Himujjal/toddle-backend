@@ -17,7 +17,7 @@
   "main": "dist/index.js",
   "scripts": {
     "eslint": "eslint src/server.ts",
-    "build": "tsc && cp -r src/public dist/public",
+    "build": "tsc && cp -r src/public dist/",
     "dev": "nodemon",
     "start": "node dist/server.js",
     "test": "jest"

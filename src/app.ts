@@ -13,6 +13,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.set('port', process.env.PORT || 3000);
 
+app.use(express.static(__dirname + '/public'));
+
 app.use('/api', routes);
 
 app.use((err: ApplicationError, req: Request, res: Response, next: NextFunction) => {
