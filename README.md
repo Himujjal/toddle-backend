@@ -31,8 +31,8 @@ $ yarn dev
 
 Running the above commands results in
 
-- 🌏**API Server** running at `http://localhost:3000`
-- ⚙️**Swagger UI** at `http://localhost:3000/dev/api-docs`
+- 🌏**API Server** running at `http://localhost:3000/api`
+- ⚙️**Swagger UI** at `http://localhost:3000/api/dev/api-docs`
 
 ## Packaging and Deployment
 
