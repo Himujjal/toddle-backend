@@ -61,11 +61,10 @@ $ npm run build && npm run start
 
 To edit environment variables, create a file with name `.env` and copy the contents from `.env.default` to start with.
 
-| Var Name  | Type   | Default                           | Description                            |
-| --------- | ------ | --------------------------------- | -------------------------------------- |
-| NODE_ENV  | string | `development`                     | API runtime environment. eg: `staging` |
-| PORT      | number | `3000`                            | Port to run the API server on          |
-| MONGO_URL | string | `mongodb://localhost:27017/books` | URL for MongoDB                        |
+| Var Name | Type   | Default       | Description                            |
+| -------- | ------ | ------------- | -------------------------------------- |
+| NODE_ENV | string | `development` | API runtime environment. eg: `staging` |
+| PORT     | number | `3000`        | Port to run the API server on          |
 
 ## Logging
 
@@ -75,39 +74,3 @@ The application uses [winston](https://github.com/winstonjs/winston) as the defa
 - The `docker-compose` file has a volume attached to container to expose host directory to the container for writing logs.
 - Console messages are prettified
 - Each line in error log file is a stringified JSON.
-
-### Directory Structure
-
-```
-+-- scripts
-|   +-- dev.sh
-+-- src
-|   +-- controllers
-|   |   +-- book
-|   |   |   +-- add.ts
-|   |   |   +-- all.ts
-|   |   |   +-- index.ts
-|   |   |   +-- search.ts
-|   +-- middleware
-|   |   +-- handle-error-middleware.ts
-|   +-- models
-|   |   +-- Book.ts
-|   +-- app.ts
-|   +-- mongo-connection.ts
-|   +-- routes.ts
-|   +-- server.ts
-+-- .env
-+-- .env.default
-+-- .eslintrc.js
-+-- .gitignore
-+-- .prettierrc.js
-+-- docker-compose.dev.yml
-+-- docker-compose.yml
-+-- Dockerfile
-+-- nodemon.json
-+-- openapi.json
-+-- package-lock.json
-+-- package.json
-+-- README.md
-+-- tsconfig.json
-```

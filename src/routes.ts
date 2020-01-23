@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import swaggerUi from 'swagger-ui-express';
-import apiSpec from '../openapi.json';
+import apiSpec from './openapi.json';
 
 import * as AuthController from './controllers/auth';
 import * as SurveyController from './controllers/survey';
