@@ -2,6 +2,8 @@
 
 This repo contains the backend for the toddle interview.
 
+API hosted on : [toddle-backend.azurewebsites.net/api](https://toddle-backend.azurewebsites.net/api).
+
 ## Installation
 
 #### 1. Clone this repo
@@ -18,6 +20,10 @@ $ yarn install
 ```
 
 ## Development
+
+### Load the postman.json file
+
+Import the [postman.json](./postman.json) file to Postman to get the API and their documentation
 
 ### Start dev server
 
