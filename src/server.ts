@@ -1,7 +1,7 @@
 import dotenv from 'dotenv';
 const result = dotenv.config();
 if (result.error) {
-  dotenv.config({ path: '.env.default' });
+  dotenv.config({ path: '.env' });
 }
 
 import app from './app';
